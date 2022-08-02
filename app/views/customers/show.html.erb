@@ -9,3 +9,7 @@
 <div id="name-of-supermarket">
     <p><%= @supermarket.name %></p>
 </div>
+
+<div id="total-price-of-items">
+    <p>Total Price: <%= number_to_currency(@customer.total_price) %></p>
+</div>

@@ -42,4 +42,24 @@ RSpec.describe Customer, type: :feature do
             expect(page).to have_content("King Soopers")
         end
     end
+
+    it 'displays total price of all customers items' do
+        king_soopers = Supermarket.create(name: "King Soopers", location: "Denver, CO")
+
+        bob = Customer.create(name: "Bob", supermarket_id: king_soopers.id)
+
+        milk = Item.create(name: "Milk", price: 5)
+        bread = Item.create(name: "Bread", price: 2)
+        cookies = Item.create(name: "Cookies", price: 3)
+
+        customer_item1 = CustomerItem.create(customer_id: bob.id, item_id: milk.id)
+        customer_item2 = CustomerItem.create(customer_id: bob.id, item_id: bread.id)
+        customer_item3 = CustomerItem.create(customer_id: bob.id, item_id: cookies.id)
+
+        visit "customers/#{bob.id}"
+
+        within "#total-price-of-items" do
+            expect(page).to have_content("Total Price: $10.00")
+        end
+    end
 end
