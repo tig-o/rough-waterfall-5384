@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  #begin
+  get 'customers/:id', to: 'customers#show'
 end

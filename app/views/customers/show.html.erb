@@ -1,0 +1,11 @@
+<h1> <%= @customer.name %> Show Page </h1>
+
+<div id="list-of-items">
+    <% @customer_items.each do |item| %>
+        <p><%= item.name %></p>
+    <% end %>
+</div>
+
+<div id="name-of-supermarket">
+    <p><%= @supermarket.name %></p>
+</div>
